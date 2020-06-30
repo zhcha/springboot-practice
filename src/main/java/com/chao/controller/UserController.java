@@ -1,6 +1,7 @@
 package com.chao.controller;
 
 import com.chao.bean.UserDO;
+import com.chao.exception.UserException;
 import com.chao.service.UserService;
 import com.chao.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,4 +25,14 @@ public class UserController {
     public String selectRedisInfo() {
         return userService.getRedisInfo();
     }
+
+    @GetMapping("/exceptionT")
+    public String exceptionT() throws UserException {
+        try {
+            return "";
+        } catch (Exception e) {
+            throw new UserException("获取数据发生异常");
+        }
+    }
+
 }
